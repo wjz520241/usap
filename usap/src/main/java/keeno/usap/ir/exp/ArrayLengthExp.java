@@ -3,6 +3,9 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.ArrayType;
 import keeno.usap.language.PrimitiveType;
 
+/**
+ * 数组长度
+ */
 public class ArrayLengthExp implements UnaryExp {
 
     private final Var base;
