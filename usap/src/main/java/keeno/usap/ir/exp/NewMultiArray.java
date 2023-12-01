@@ -3,6 +3,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.ArrayType;
 import soot.util.ArraySet;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -39,7 +40,9 @@ public class NewMultiArray implements NewExp {
 
     @Override
     public Set<RValue> getUses() {
-        return new ArraySet<>(lengths.size());
+        Set<RValue> arraySet = new ArraySet<>(lengths.size());
+        arraySet.addAll(lengths);
+        return arraySet;
     }
 
     @Override
