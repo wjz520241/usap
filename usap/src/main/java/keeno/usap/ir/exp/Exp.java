@@ -15,7 +15,7 @@ public interface Exp extends Serializable {
     /**
      * @return 此表达式使用的表达式列表
      */
-    default Set<RValue> getUse(){
+    default Set<RValue> getUses(){
         return Set.of();
     };
 }

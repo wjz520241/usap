@@ -39,12 +39,17 @@ public abstract class AssignStmt<L extends LValue, R extends RValue> extends Def
 
     @Override
     public Set<RValue> getUse() {
-        Set<RValue> lvalueUse = lvalue.getUse();
-        Set<RValue> rvalueUse = rvalue.getUse();
-        Set<RValue> arraySet = new ArraySet<>();
+        Set<RValue> lvalueUse = lvalue.getUses();
+        Set<RValue> rvalueUse = rvalue.getUses();
+        Set<RValue> arraySet = new ArraySet<>(lvalueUse.size() + rvalueUse.size() + 1);
         arraySet.addAll(lvalueUse);
         arraySet.addAll(rvalueUse);
         arraySet.add(rvalue);
         return arraySet;
+    }
+
+    @Override
+    public String toString() {
+        return lvalue + " = " + rvalue;
     }
 }

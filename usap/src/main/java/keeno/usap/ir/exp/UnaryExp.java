@@ -14,7 +14,7 @@ public interface UnaryExp extends RValue {
     Var getOperand();
 
     @Override
-    default Set<RValue> getUse() {
+    default Set<RValue> getUses() {
         return Set.of(getOperand());
     }
 
