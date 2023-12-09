@@ -1,7 +1,9 @@
+
+
+
 package keeno.usap.language.generics;
 
-
-
+import keeno.usap.util.Experimental;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +21,8 @@ import java.util.stream.Collectors;
 public final class ClassGSignature implements Serializable {
 
     /**
-     * 此类签名是否描述接口。此字段仅用于精确打印。
+     * Whether this class signature describes an interface.
+     * This field is only used for precise printing.
      *
      * @see #toString()
      */
@@ -41,14 +44,17 @@ public final class ClassGSignature implements Serializable {
         this.superInterfaces = List.copyOf(superInterfaces);
     }
 
+    @Experimental
     public List<TypeParameter> getTypeParams() {
         return typeParams;
     }
 
+    @Experimental
     public ClassTypeGSignature getSuperClass() {
         return superClass;
     }
 
+    @Experimental
     public List<ClassTypeGSignature> getSuperInterfaces() {
         return superInterfaces;
     }

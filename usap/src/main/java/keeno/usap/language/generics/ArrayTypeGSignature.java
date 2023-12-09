@@ -1,5 +1,9 @@
+
+
+
 package keeno.usap.language.generics;
 
+import keeno.usap.util.Experimental;
 
 /**
  * In <a href="https://docs.oracle.com/javase/specs/jvms/se20/html/jvms-4.html#jvms-ArrayTypeSignature">
@@ -29,6 +33,7 @@ public final class ArrayTypeGSignature implements ReferenceTypeGSignature {
         return dimensions;
     }
 
+    @Experimental
     public TypeGSignature getBaseTypeGSignature() {
         return baseTypeGSig;
     }

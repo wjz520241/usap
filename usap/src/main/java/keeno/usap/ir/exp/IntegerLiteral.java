@@ -1,4 +1,6 @@
+
+
 package keeno.usap.ir.exp;
 
-public interface IntegerLiteral extends NumberLiteral{
+public interface IntegerLiteral extends NumberLiteral {
 }

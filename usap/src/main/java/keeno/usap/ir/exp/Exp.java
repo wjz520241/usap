@@ -1,21 +1,28 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.Type;
+import keeno.usap.language.type.Type;
 
 import java.io.Serializable;
 import java.util.Set;
 
 /**
- * 表示一个Expressions
+ * Representation of expressions in Tai-e IR.
  */
 public interface Exp extends Serializable {
 
+    /**
+     * @return type of this expression.
+     */
     Type getType();
 
     /**
-     * @return 此表达式使用的表达式列表
+     * @return a list of expressions which are used by (contained in) this Exp.
      */
-    default Set<RValue> getUses(){
+    default Set<RValue> getUses() {
         return Set.of();
-    };
+    }
+
+    <T> T accept(ExpVisitor<T> visitor);
 }

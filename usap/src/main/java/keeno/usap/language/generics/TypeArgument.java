@@ -1,5 +1,9 @@
+
+
+
 package keeno.usap.language.generics;
 
+import keeno.usap.util.Experimental;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -25,11 +29,13 @@ public final class TypeArgument implements Serializable {
         this.gSig = gSig;
     }
 
+    @Experimental
     public Kind getKind() {
         return kind;
     }
 
     @Nullable
+    @Experimental
     public ReferenceTypeGSignature getGSignature() {
         return gSig;
     }

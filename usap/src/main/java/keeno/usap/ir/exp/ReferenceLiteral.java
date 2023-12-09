@@ -1,8 +1,14 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ReferenceType;
+import keeno.usap.language.type.ReferenceType;
 
-public interface ReferenceLiteral extends Literal{
+/**
+ * Literal of reference type.
+ */
+public interface ReferenceLiteral extends Literal {
+
     @Override
     ReferenceType getType();
 }

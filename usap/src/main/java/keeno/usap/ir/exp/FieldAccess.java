@@ -1,9 +1,13 @@
+
+
 package keeno.usap.ir.exp;
 
-
 import keeno.usap.ir.proginfo.FieldRef;
-import keeno.usap.language.Type;
+import keeno.usap.language.type.Type;
 
+/**
+ * Representation of field access expressions.
+ */
 public abstract class FieldAccess implements LValue, RValue {
 
     protected final FieldRef fieldRef;

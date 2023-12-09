@@ -1,13 +1,13 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 import java.util.Set;
 
 /**
- * 因为Unary(Var var, UnaryExp unaryExp)，所以UnaryExp必定在右值
- * 注意getType方法的返回值是基本类型
- * 看看Jimple生成的中间码就明白了
+ * Representation of unary expression.
  */
 public interface UnaryExp extends RValue {
 

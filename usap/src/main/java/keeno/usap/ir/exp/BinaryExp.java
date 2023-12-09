@@ -1,33 +1,35 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- *同一元表达式注释
+ * Representation of binary expression.
  */
 public interface BinaryExp extends RValue {
 
+    /**
+     * Representation of binary operators.
+     */
     interface Op {
-
     }
 
     /**
-     * @return 获取操作符
+     * @return the operator.
      */
     Op getOperator();
 
     /**
-     * @return 获取第一个操作数
+     * @return the first operand.
      */
     Var getOperand1();
 
     /**
-     * @return 获取第2个操作数
+     * @return the second operand.
      */
     Var getOperand2();
 
     @Override
     PrimitiveType getType();
-
-
 }

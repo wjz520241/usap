@@ -1,4 +1,6 @@
+
+
 package keeno.usap.ir.exp;
 
-public interface FloatingPointLiteral extends NumberLiteral{
+public interface FloatingPointLiteral extends NumberLiteral {
 }

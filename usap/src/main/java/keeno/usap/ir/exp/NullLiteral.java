@@ -1,8 +1,11 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.NullType;
+import keeno.usap.language.type.NullType;
 
-public enum NullLiteral implements ReferenceLiteral{
+public enum NullLiteral implements ReferenceLiteral {
+
     INSTANCE;
 
     public static NullLiteral get() {
@@ -12,6 +15,11 @@ public enum NullLiteral implements ReferenceLiteral{
     @Override
     public NullType getType() {
         return NullType.NULL;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

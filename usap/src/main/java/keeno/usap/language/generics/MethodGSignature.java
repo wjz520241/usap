@@ -1,7 +1,9 @@
+
+
+
 package keeno.usap.language.generics;
 
-
-
+import keeno.usap.util.Experimental;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,21 +38,22 @@ public final class MethodGSignature implements Serializable {
         this.throwsSigs = List.copyOf(throwsSigs);
     }
 
+    @Experimental
     public List<TypeParameter> getTypeParams() {
         return typeParams;
     }
 
-
+    @Experimental
     public List<TypeGSignature> getParameterSigs() {
         return parameterSigs;
     }
 
-
+    @Experimental
     public TypeGSignature getResultSignature() {
         return resultSignature;
     }
 
-
+    @Experimental
     public List<TypeGSignature> getThrowsSigs() {
         return throwsSigs;
     }
@@ -68,7 +71,7 @@ public final class MethodGSignature implements Serializable {
         if (!throwsSigs.isEmpty()) {
             joiner.add("throws");
             joiner.add(throwsSigs.stream().map(TypeGSignature::toString)
-                    .collect(Collectors.joining(", ")));
+                    .collect(java.util.stream.Collectors.joining(", ")));
         }
         return joiner.toString();
     }

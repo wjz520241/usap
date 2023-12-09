@@ -1,14 +1,15 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ArrayType;
-import soot.util.ArraySet;
+import keeno.usap.language.type.ArrayType;
+import keeno.usap.util.collection.ArraySet;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 /**
- * 多维数组 new T[..][..][..]..
+ * Representation of new multi-array expression, e.g., new T[..][..][..].
  */
 public class NewMultiArray implements NewExp {
 
@@ -40,9 +41,12 @@ public class NewMultiArray implements NewExp {
 
     @Override
     public Set<RValue> getUses() {
-        Set<RValue> arraySet = new ArraySet<>(lengths.size());
-        arraySet.addAll(lengths);
-        return arraySet;
+        return new ArraySet<>(lengths);
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

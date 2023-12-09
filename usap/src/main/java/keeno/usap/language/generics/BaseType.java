@@ -1,3 +1,5 @@
+
+
 package keeno.usap.language.generics;
 
 /**
@@ -14,6 +16,8 @@ package keeno.usap.language.generics;
  *     <li>short</li>
  *     <li>boolean</li>
  * </ul>
+ *
+ * 可以看看《深入理解java虚拟机》227页字段表集合
  */
 public enum BaseType implements TypeGSignature {
 

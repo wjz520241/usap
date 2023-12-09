@@ -1,3 +1,6 @@
+
+
+
 package keeno.usap.language.generics;
 
 import org.objectweb.asm.signature.SignatureVisitor;
@@ -7,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+import static keeno.usap.language.generics.ClassTypeGSignature.JAVA_LANG;
+import static keeno.usap.language.generics.ClassTypeGSignature.JAVA_LANG_OBJECT;
+import static keeno.usap.language.generics.ClassTypeGSignature.OBJECT;
 
 /**
  * Builds a {@link TypeGSignature}.
@@ -158,10 +164,10 @@ class TypeGSignatureBuilder extends SignatureVisitor {
 
     private ClassTypeGSignature buildClassTypeGSignature() {
         try {
-            if (ClassTypeGSignature.JAVA_LANG.equals(packageName)
+            if (JAVA_LANG.equals(packageName)
                     && classNames.size() == 1
-                    && ClassTypeGSignature.OBJECT.equals(classNames.get(0))) {
-                return ClassTypeGSignature.JAVA_LANG_OBJECT;
+                    && OBJECT.equals(classNames.get(0))) {
+                return JAVA_LANG_OBJECT;
             }
             assert classNames != null && !classNames.isEmpty();
             List<ClassTypeGSignature.SimpleClassTypeGSignature> typeSigs = new ArrayList<>();

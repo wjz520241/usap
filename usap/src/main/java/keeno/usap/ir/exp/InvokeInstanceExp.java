@@ -1,14 +1,16 @@
+
+
 package keeno.usap.ir.exp;
 
-
 import keeno.usap.ir.proginfo.MethodRef;
-import soot.util.ArraySet;
+import keeno.usap.util.collection.ArraySet;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * （虚拟、接口和特殊）表达式的表示
+ * Representation of instance invocation (virtual, interface,
+ * and special) expression.
  */
 public abstract class InvokeInstanceExp extends InvokeExp {
 
@@ -31,9 +33,6 @@ public abstract class InvokeInstanceExp extends InvokeExp {
         return uses;
     }
 
-    /**
-     * @return 这个格式可以看出InvokeInstanceExp的整体的层次结构和设计思路
-     */
     @Override
     public String toString() {
         return String.format("%s %s.%s%s", getInvokeString(),

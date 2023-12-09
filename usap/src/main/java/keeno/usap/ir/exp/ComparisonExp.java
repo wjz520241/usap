@@ -1,8 +1,13 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
-import keeno.usap.language.Type;
+import keeno.usap.language.type.PrimitiveType;
+import keeno.usap.language.type.Type;
 
+/**
+ * Representation of comparison expression, e.g., cmp.
+ */
 public class ComparisonExp extends AbstractBinaryExp {
 
     public enum Op implements BinaryExp.Op {
@@ -45,11 +50,13 @@ public class ComparisonExp extends AbstractBinaryExp {
         return op;
     }
 
-    /**
-     * @return 这里更多的是代表数字的意思，而非具体的类型
-     */
     @Override
     public PrimitiveType getType() {
         return PrimitiveType.INT;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

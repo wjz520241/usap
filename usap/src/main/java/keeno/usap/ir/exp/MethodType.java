@@ -1,13 +1,20 @@
 
+
 package keeno.usap.ir.exp;
 
-
-import keeno.usap.language.ClassType;
-import keeno.usap.language.Type;
+import keeno.usap.World;
+import keeno.usap.language.type.ClassType;
+import keeno.usap.language.type.Type;
+import keeno.usap.util.Hashes;
 
 import java.util.List;
 
+import static keeno.usap.language.classes.ClassNames.METHOD_TYPE;
+import static keeno.usap.language.classes.StringReps.toDescriptor;
 
+/**
+ * Representation of java.lang.invoke.MethodType instances.
+ */
 public class MethodType implements ReferenceLiteral {
 
     private final List<Type> paramTypes;
@@ -33,7 +40,12 @@ public class MethodType implements ReferenceLiteral {
 
     @Override
     public ClassType getType() {
-        return null;
+        return World.get().getTypeSystem().getClassType(METHOD_TYPE);
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override
@@ -47,5 +59,15 @@ public class MethodType implements ReferenceLiteral {
         MethodType that = (MethodType) o;
         return paramTypes.equals(that.paramTypes) &&
                 returnType.equals(that.returnType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Hashes.hash(paramTypes, returnType);
+    }
+
+    @Override
+    public String toString() {
+        return "MethodType: " + toDescriptor(paramTypes, returnType);
     }
 }

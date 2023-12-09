@@ -1,8 +1,12 @@
+
+
+
 package keeno.usap.language.generics;
 
 /**
- * <a href="https://docs.oracle.com/javase/specs/jvms/se20/html/jvms-4.html#jvms-VoidDescriptor">
+ * In <a href="https://docs.oracle.com/javase/specs/jvms/se20/html/jvms-4.html#jvms-VoidDescriptor">
  * JVM Spec. 4.3.3 VoidDescriptor</a>,
+ * The <i>void</i> descriptor indicates that the method returns no value.
  */
 public enum VoidDescriptor implements TypeGSignature {
 

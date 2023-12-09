@@ -1,10 +1,16 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
-public class IntLiteral implements IntegerLiteral{
+/**
+ * Representation of int literals.
+ */
+public class IntLiteral implements IntegerLiteral {
+
     /**
-     * 缓存-128~127的数字
+     * Cache frequently used literals for saving space.
      */
     private static final IntLiteral[] cache = new IntLiteral[-(-128) + 127 + 1];
 
@@ -14,6 +20,9 @@ public class IntLiteral implements IntegerLiteral{
         }
     }
 
+    /**
+     * The value of the literal.
+     */
     private final int value;
 
     private IntLiteral(int value) {
@@ -21,9 +30,8 @@ public class IntLiteral implements IntegerLiteral{
     }
 
     public static IntLiteral get(int value) {
-        //因为第一个元素是从-128开始的，所以取下标需要加上128
         final int offset = 128;
-        if (value >= -128 && value <= 127) {
+        if (value >= -128 && value <= 127) { // will cache
             return cache[value + offset];
         }
         return new IntLiteral(value);
@@ -34,6 +42,9 @@ public class IntLiteral implements IntegerLiteral{
         return PrimitiveType.INT;
     }
 
+    /**
+     * @return the value of the literal as an int.
+     */
     public int getValue() {
         return value;
     }
@@ -42,6 +53,12 @@ public class IntLiteral implements IntegerLiteral{
     public Integer getNumber() {
         return value;
     }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof IntLiteral) {

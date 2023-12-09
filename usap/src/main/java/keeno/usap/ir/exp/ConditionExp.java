@@ -1,11 +1,13 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- * 条件表达式  a==b
+ * Representation of condition expression, e.g., a == b.
  */
-public class ConditionExp extends AbstractBinaryExp{
+public class ConditionExp extends AbstractBinaryExp {
 
     public enum Op implements BinaryExp.Op {
 
@@ -50,5 +52,10 @@ public class ConditionExp extends AbstractBinaryExp{
     @Override
     public PrimitiveType getType() {
         return PrimitiveType.INT;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

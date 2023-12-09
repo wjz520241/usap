@@ -1,11 +1,17 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- * 注释同{@link IntLiteral}
+ * Representation of long literals.
  */
-public class LongLiteral implements IntegerLiteral{
+public class LongLiteral implements IntegerLiteral {
+
+    /**
+     * Cache frequently used literals for saving space.
+     */
     private static final LongLiteral[] cache = new LongLiteral[-(-128) + 127 + 1];
 
     static {
@@ -14,6 +20,9 @@ public class LongLiteral implements IntegerLiteral{
         }
     }
 
+    /**
+     * The value of the literal.
+     */
     private final long value;
 
     private LongLiteral(long value) {
@@ -22,7 +31,7 @@ public class LongLiteral implements IntegerLiteral{
 
     public static LongLiteral get(long value) {
         final int offset = 128;
-        if (value >= -128 && value <= 127) {
+        if (value >= -128 && value <= 127) { // will cache
             return cache[(int) value + offset];
         }
         return new LongLiteral(value);
@@ -33,6 +42,9 @@ public class LongLiteral implements IntegerLiteral{
         return PrimitiveType.LONG;
     }
 
+    /**
+     * @return the value of the literal as a long.
+     */
     public long getValue() {
         return value;
     }
@@ -43,6 +55,11 @@ public class LongLiteral implements IntegerLiteral{
     }
 
     @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o instanceof LongLiteral) {
             return value == ((LongLiteral) o).getValue();
@@ -50,9 +67,6 @@ public class LongLiteral implements IntegerLiteral{
         return false;
     }
 
-    /**
-     * @see DoubleLiteral#hashCode()
-     */
     @Override
     public int hashCode() {
         return (int) (value ^ (value >>> 32));

@@ -1,22 +1,30 @@
+
+
 package keeno.usap.ir.exp;
 
 import keeno.usap.ir.proginfo.MethodRef;
-import keeno.usap.language.Type;
-import soot.util.ArraySet;
+import keeno.usap.language.type.Type;
+import keeno.usap.util.collection.ArraySet;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Representation of method invocation expression.
+ */
 public abstract class InvokeExp implements RValue {
-    protected final MethodRef methodRef;
-
-    protected final List<Var> args;
 
     /**
-     * @param methodRef 方法的签名信息
-     * @param args      实参
+     * The method reference at the invocation.
      */
+    protected final MethodRef methodRef;
+
+    /**
+     * The arguments of the invocation.
+     */
+    protected final List<Var> args;
+
     protected InvokeExp(MethodRef methodRef, List<Var> args) {
         this.methodRef = methodRef;
         this.args = List.copyOf(args);
@@ -27,21 +35,32 @@ public abstract class InvokeExp implements RValue {
         return methodRef.getReturnType();
     }
 
+    /**
+     * @return the method reference at the invocation.
+     */
     public MethodRef getMethodRef() {
         return methodRef;
     }
 
+    /**
+     * @return the number of the arguments of the invocation.
+     */
     public int getArgCount() {
         return args.size();
     }
 
     /**
-     * @return 获取第i个参数，注意索引范围
+     * @return the i-th argument of the invocation.
+     * @throws IndexOutOfBoundsException if the index is out of range
+     *                                   (index &lt; 0 || index &ge; getArgCount())
      */
     public Var getArg(int i) {
         return args.get(i);
     }
 
+    /**
+     * @return a list of arguments of the invocation.
+     */
     public List<Var> getArgs() {
         return args;
     }
@@ -56,8 +75,6 @@ public abstract class InvokeExp implements RValue {
 
     @Override
     public Set<RValue> getUses() {
-        Set<RValue> arraySet = new ArraySet<>(args.size());
-        arraySet.addAll(args);
-        return arraySet;
+        return new ArraySet<>(args);
     }
 }

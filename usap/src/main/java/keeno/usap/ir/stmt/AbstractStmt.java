@@ -1,3 +1,5 @@
+
+
 package keeno.usap.ir.stmt;
 
 import keeno.usap.ir.exp.LValue;
@@ -6,9 +8,10 @@ import keeno.usap.ir.exp.RValue;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class AbstractStmt implements Stmt {
+abstract class AbstractStmt implements Stmt {
 
     protected int index = -1;
+
     protected int lineNumber = -1;
 
     @Override
@@ -18,8 +21,8 @@ public abstract class AbstractStmt implements Stmt {
 
     @Override
     public void setIndex(int index) {
-        if (index != -1) {
-            throw new IllegalStateException("索引已设置");
+        if (this.index != -1) {
+            throw new IllegalStateException("index already set");
         }
         this.index = index;
     }
@@ -34,13 +37,23 @@ public abstract class AbstractStmt implements Stmt {
         this.lineNumber = lineNumber;
     }
 
+    // Following three methods provide default behaviors for the three
+    // implemented APIs (declared in Stmt). The subclasses of this class
+    // should override these APIs iff their behaviors are different from
+    // the default ones.
+
     @Override
     public Optional<LValue> getDef() {
         return Optional.empty();
     }
 
     @Override
-    public Set<RValue> getUse() {
+    public Set<RValue> getUses() {
         return Set.of();
+    }
+
+    @Override
+    public boolean canFallThrough() {
+        return true;
     }
 }

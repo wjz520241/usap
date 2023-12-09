@@ -1,11 +1,13 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- * 位移表达式  a>>b
+ * Representation of shift expression, e.g., a >> b.
  */
-public class ShiftExp extends AbstractBinaryExp{
+public class ShiftExp extends AbstractBinaryExp {
 
     public enum Op implements BinaryExp.Op {
 
@@ -46,5 +48,10 @@ public class ShiftExp extends AbstractBinaryExp{
     @Override
     public PrimitiveType getType() {
         return (PrimitiveType) operand1.getType();
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

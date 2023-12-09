@@ -1,8 +1,14 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 public class DoubleLiteral implements FloatingPointLiteral {
+
+    /**
+     * Cache frequently used literals for saving space.
+     */
     private static final DoubleLiteral ZERO = new DoubleLiteral(0);
 
     private final double value;
@@ -30,6 +36,11 @@ public class DoubleLiteral implements FloatingPointLiteral {
     }
 
     @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -41,11 +52,6 @@ public class DoubleLiteral implements FloatingPointLiteral {
         return Double.compare(that.value, value) == 0;
     }
 
-    /**
-     * @return 这种实现方式的目的是尽可能地降低哈希冲突的概率。由于double类型的值具有较大的范围和精度，
-     * 直接使用该值作为哈希码可能导致较高的冲突率。通过将double类型的位表示形式转换为long类型，
-     * 并使用位运算操作，可以更好地保持哈希码的均匀分布性。
-     */
     @Override
     public int hashCode() {
         long temp = Double.doubleToLongBits(value);

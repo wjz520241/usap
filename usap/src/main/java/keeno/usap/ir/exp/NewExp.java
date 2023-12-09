@@ -1,8 +1,14 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ReferenceType;
+import keeno.usap.language.type.ReferenceType;
 
-public interface NewExp extends Exp {
+/**
+ * Representation of new expressions.
+ */
+public interface NewExp extends RValue {
+
     @Override
     ReferenceType getType();
 }

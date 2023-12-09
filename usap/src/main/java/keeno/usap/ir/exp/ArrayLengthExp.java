@@ -1,10 +1,12 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ArrayType;
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.ArrayType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- * 数组长度
+ * Representation of array length expression, e.g., arr.length.
  */
 public class ArrayLengthExp implements UnaryExp {
 
@@ -15,6 +17,10 @@ public class ArrayLengthExp implements UnaryExp {
         assert base.getType() instanceof ArrayType;
     }
 
+    public Var getBase() {
+        return base;
+    }
+
     @Override
     public Var getOperand() {
         return base;
@@ -23,6 +29,11 @@ public class ArrayLengthExp implements UnaryExp {
     @Override
     public PrimitiveType getType() {
         return PrimitiveType.INT;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

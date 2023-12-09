@@ -1,10 +1,14 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
-public class FloatLiteral implements FloatingPointLiteral{
+public class FloatLiteral implements FloatingPointLiteral {
 
-    //缓存常用文字以节省空间
+    /**
+     * Cache frequently used literals for saving space.
+     */
     private static final FloatLiteral ZERO = new FloatLiteral(0);
 
     private final float value;
@@ -29,6 +33,11 @@ public class FloatLiteral implements FloatingPointLiteral{
     @Override
     public Float getNumber() {
         return value;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

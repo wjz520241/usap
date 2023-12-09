@@ -1,7 +1,11 @@
+
+
+
 package keeno.usap.language.generics;
 
+import keeno.usap.util.Experimental;
+import keeno.usap.util.collection.Maps;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
@@ -10,7 +14,8 @@ import java.util.concurrent.ConcurrentMap;
  */
 public final class TypeVariableGSignature implements ReferenceTypeGSignature {
 
-    private static final ConcurrentMap<String, TypeVariableGSignature> map = new ConcurrentHashMap<>(48);
+    private static final ConcurrentMap<String, TypeVariableGSignature> map =
+            Maps.newConcurrentMap(48);
 
     private final String typeName;
 
@@ -22,6 +27,7 @@ public final class TypeVariableGSignature implements ReferenceTypeGSignature {
         return map.computeIfAbsent(typeName, TypeVariableGSignature::new);
     }
 
+    @Experimental
     public String getTypeName() {
         return typeName;
     }

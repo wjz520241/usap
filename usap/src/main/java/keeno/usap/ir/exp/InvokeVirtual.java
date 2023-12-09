@@ -1,12 +1,13 @@
-package keeno.usap.ir.exp;
 
+
+package keeno.usap.ir.exp;
 
 import keeno.usap.ir.proginfo.MethodRef;
 
 import java.util.List;
 
 /**
- * 参阅doc目录中的《方法调用图》, o.m(...).
+ * Representation of invokevirtual expression, e.g., o.m(...).
  */
 public class InvokeVirtual extends InvokeInstanceExp {
 
@@ -19,4 +20,8 @@ public class InvokeVirtual extends InvokeInstanceExp {
         return "invokevirtual";
     }
 
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
 }

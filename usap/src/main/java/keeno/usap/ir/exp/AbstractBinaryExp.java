@@ -1,11 +1,17 @@
+
+
 package keeno.usap.ir.exp;
 
-import soot.util.ArraySet;
+import keeno.usap.util.collection.ArraySet;
 
 import java.util.Collections;
 import java.util.Set;
 
-abstract class AbstractBinaryExp implements BinaryExp{
+/**
+ * Provides common functionalities for {@link BinaryExp} implementations.
+ */
+abstract class AbstractBinaryExp implements BinaryExp {
+
     protected final Var operand1;
 
     protected final Var operand2;
@@ -17,7 +23,7 @@ abstract class AbstractBinaryExp implements BinaryExp{
     }
 
     /**
-     *验证此表达式的两个值的类型正确性。
+     * Validates type correctness of the two values of this expression.
      */
     protected void validate() {
     }

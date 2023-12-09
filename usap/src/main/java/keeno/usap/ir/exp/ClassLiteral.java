@@ -1,9 +1,18 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ClassType;
-import keeno.usap.language.Type;
+import keeno.usap.World;
+import keeno.usap.language.type.ClassType;
+import keeno.usap.language.type.Type;
 
-public class ClassLiteral implements ReferenceLiteral{
+import static keeno.usap.language.classes.ClassNames.CLASS;
+
+public class ClassLiteral implements ReferenceLiteral {
+
+    /**
+     * The type represented by this class object.
+     */
     private final Type value;
 
     private ClassLiteral(Type value) {
@@ -16,11 +25,18 @@ public class ClassLiteral implements ReferenceLiteral{
 
     @Override
     public ClassType getType() {
-        return null;
+        // TODO: cache Class type in a static field? Doing so
+        //  requires to reset the field when resetting World.
+        return World.get().getTypeSystem().getClassType(CLASS);
     }
 
     public Type getTypeValue() {
         return value;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

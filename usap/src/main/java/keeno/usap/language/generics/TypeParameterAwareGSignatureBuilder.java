@@ -1,5 +1,7 @@
-package keeno.usap.language.generics;
 
+
+
+package keeno.usap.language.generics;
 
 import org.objectweb.asm.signature.SignatureVisitor;
 
@@ -8,8 +10,11 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+import static keeno.usap.language.generics.TypeParameter.E;
+import static keeno.usap.language.generics.TypeParameter.T;
+
 /**
- * 收集包含类型参数的签名。
+ * Collects a Signature that contains type parameters.
  *
  * @see <a href="https://docs.oracle.com/javase/specs/jvms/se20/html/jvms-4.html#jvms-TypeParameter">
  * JVM Spec. 4.7.9.1 TypeParameter</a>
@@ -144,8 +149,8 @@ abstract class TypeParameterAwareGSignatureBuilder extends SignatureVisitor {
             assert typeName != null;
             if (classBound == ClassTypeGSignature.JAVA_LANG_OBJECT
                     && interfaceBounds.isEmpty()
-                    && (TypeParameter.T.getTypeName().equals(typeName) || TypeParameter.E.getTypeName().equals(typeName))) {
-                return TypeParameter.T.getTypeName().equals(typeName) ? TypeParameter.T : TypeParameter.E;
+                    && (T.getTypeName().equals(typeName) || E.getTypeName().equals(typeName))) {
+                return T.getTypeName().equals(typeName) ? T : E;
             }
             return new TypeParameter(typeName,
                     classBound, List.copyOf(interfaceBounds));

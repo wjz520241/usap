@@ -1,7 +1,9 @@
+
+
 package keeno.usap.ir.exp;
 
 /**
- * 所有左侧值的标记接口
+ * Marker interface for all left-hand-side value.
  */
 public interface LValue extends Exp {
 }

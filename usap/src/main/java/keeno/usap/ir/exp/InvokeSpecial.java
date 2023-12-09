@@ -1,12 +1,13 @@
-package keeno.usap.ir.exp;
 
+
+package keeno.usap.ir.exp;
 
 import keeno.usap.ir.proginfo.MethodRef;
 
 import java.util.List;
 
 /**
- * 参阅doc目录中的《方法调用图》, super.m(...).
+ * Representation of invokespecial expression, e.g., super.m(...).
  */
 public class InvokeSpecial extends InvokeInstanceExp {
 
@@ -17,5 +18,10 @@ public class InvokeSpecial extends InvokeInstanceExp {
     @Override
     public String getInvokeString() {
         return "invokespecial";
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

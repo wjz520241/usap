@@ -1,9 +1,11 @@
+
+
 package keeno.usap.language.annotation;
 
 public record EnumElement(
-        // 枚举类型的字符串表示
+        // string representation of the enum type
         String type,
-        // 枚举常量的名称
+        // name of the enum constant
         String name)
         implements Element {
 

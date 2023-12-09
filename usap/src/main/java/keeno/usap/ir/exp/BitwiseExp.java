@@ -1,11 +1,14 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- *位操作表达式  a | b
+ * Representation of bitwise expression, e.g., a | b.
  */
-public class BitwiseExp extends AbstractBinaryExp{
+public class BitwiseExp extends AbstractBinaryExp {
+
     public enum Op implements BinaryExp.Op {
 
         OR("|"),
@@ -46,5 +49,10 @@ public class BitwiseExp extends AbstractBinaryExp{
     @Override
     public PrimitiveType getType() {
         return (PrimitiveType) operand1.getType();
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 }

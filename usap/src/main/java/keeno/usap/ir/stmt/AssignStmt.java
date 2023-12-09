@@ -1,19 +1,26 @@
+
+
 package keeno.usap.ir.stmt;
 
 import keeno.usap.ir.exp.LValue;
 import keeno.usap.ir.exp.RValue;
-import soot.util.ArraySet;
+import keeno.usap.util.collection.ArraySet;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
 import java.util.Set;
 
 /**
- * 表示Assign statement
+ * Representation of assign statements.
+ *
+ * @param <L> type of lvalue.
+ * @param <R> type of rvalue.
  */
-public abstract class AssignStmt<L extends LValue, R extends RValue> extends DefinitionStmt<L, R> {
+public abstract class AssignStmt<L extends LValue, R extends RValue>
+        extends DefinitionStmt<L, R> {
 
     private final L lvalue;
+
     private final R rvalue;
 
     public AssignStmt(L lvalue, R rvalue) {
@@ -38,14 +45,14 @@ public abstract class AssignStmt<L extends LValue, R extends RValue> extends Def
     }
 
     @Override
-    public Set<RValue> getUse() {
-        Set<RValue> lvalueUse = lvalue.getUses();
-        Set<RValue> rvalueUse = rvalue.getUses();
-        Set<RValue> arraySet = new ArraySet<>(lvalueUse.size() + rvalueUse.size() + 1);
-        arraySet.addAll(lvalueUse);
-        arraySet.addAll(rvalueUse);
-        arraySet.add(rvalue);
-        return arraySet;
+    public Set<RValue> getUses() {
+        Set<RValue> lUses = lvalue.getUses();
+        Set<RValue> rUses = rvalue.getUses();
+        Set<RValue> uses = new ArraySet<>(lUses.size() + rUses.size() + 1);
+        uses.addAll(lUses);
+        uses.addAll(rUses);
+        uses.add(rvalue);
+        return uses;
     }
 
     @Override

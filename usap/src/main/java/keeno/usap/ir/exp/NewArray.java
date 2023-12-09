@@ -1,13 +1,16 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.ArrayType;
+import keeno.usap.language.type.ArrayType;
 
 import java.util.Set;
 
 /**
- * new 数组表达式  new T[...]
+ * Representation of new array expression, e.g., new T[..].
  */
 public class NewArray implements NewExp {
+
     private final ArrayType type;
 
     private final Var length;
@@ -29,6 +32,11 @@ public class NewArray implements NewExp {
     @Override
     public Set<RValue> getUses() {
         return Set.of(length);
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

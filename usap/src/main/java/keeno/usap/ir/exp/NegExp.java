@@ -1,9 +1,12 @@
+
+
 package keeno.usap.ir.exp;
 
-import keeno.usap.language.PrimitiveType;
+
+import keeno.usap.language.type.PrimitiveType;
 
 /**
- * 负数表达式  -x
+ * Representation of negation expression, e.g., -o;
  */
 public class NegExp implements UnaryExp {
 
@@ -12,6 +15,10 @@ public class NegExp implements UnaryExp {
     public NegExp(Var value) {
         this.value = value;
         assert value.getType() instanceof PrimitiveType;
+    }
+
+    public Var getValue() {
+        return value;
     }
 
     @Override
@@ -23,6 +30,11 @@ public class NegExp implements UnaryExp {
     public PrimitiveType getType() {
         PrimitiveType type = (PrimitiveType) value.getType();
         return type.asInt() ? PrimitiveType.INT : type;
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

@@ -1,3 +1,5 @@
+
+
 package keeno.usap.ir.exp;
 
 import keeno.usap.ir.proginfo.FieldRef;
@@ -5,7 +7,7 @@ import keeno.usap.ir.proginfo.FieldRef;
 import java.util.Set;
 
 /**
- * 实例字段访问, o.f.
+ * Representation of instance field access expression, e.g., o.f.
  */
 public class InstanceFieldAccess extends FieldAccess {
 
@@ -23,6 +25,11 @@ public class InstanceFieldAccess extends FieldAccess {
     @Override
     public Set<RValue> getUses() {
         return Set.of(base);
+    }
+
+    @Override
+    public <T> T accept(ExpVisitor<T> visitor) {
+        return visitor.visit(this);
     }
 
     @Override

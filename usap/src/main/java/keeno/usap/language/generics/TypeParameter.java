@@ -1,5 +1,9 @@
+
+
+
 package keeno.usap.language.generics;
 
+import keeno.usap.util.Experimental;
 
 import java.io.Serializable;
 import java.util.List;
@@ -39,17 +43,17 @@ public final class TypeParameter implements Serializable {
         this.interfaceBounds = interfaceBounds;
     }
 
-
+    @Experimental
     public String getTypeName() {
         return typeName;
     }
 
-
+    @Experimental
     public ReferenceTypeGSignature getClassBound() {
         return classBound;
     }
 
-
+    @Experimental
     public List<ReferenceTypeGSignature> getInterfaceBounds() {
         return interfaceBounds;
     }
