@@ -7,7 +7,7 @@ import keeno.usap.ir.proginfo.MethodRef;
 import java.util.List;
 
 /**
- * Representation of invokespecial expression, e.g., super.m(...).
+ * 参阅doc目录中的《方法调用图》, super.m(...).
  */
 public class InvokeSpecial extends InvokeInstanceExp {
 

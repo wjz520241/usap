@@ -13,12 +13,12 @@ import java.util.Set;
 public interface Exp extends Serializable {
 
     /**
-     * @return type of this expression.
+     * @return 此表达式的类型。
      */
     Type getType();
 
     /**
-     * @return a list of expressions which are used by (contained in) this Exp.
+     * @return 此表达式使用（包含在）的表达式列表。
      */
     default Set<RValue> getUses() {
         return Set.of();

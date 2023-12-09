@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.ir.proginfo.FieldRef;
 
 /**
- * Representation of static field access expression, e.g., T.f.
+ * 静态字段访问, T.f.
  */
 public class StaticFieldAccess extends FieldAccess {
 

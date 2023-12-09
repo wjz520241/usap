@@ -13,6 +13,8 @@ import static keeno.usap.language.classes.ClassNames.METHOD_TYPE;
 import static keeno.usap.language.classes.StringReps.toDescriptor;
 
 /**
+ * 反射分析使用
+ *
  * Representation of java.lang.invoke.MethodType instances.
  */
 public class MethodType implements ReferenceLiteral {

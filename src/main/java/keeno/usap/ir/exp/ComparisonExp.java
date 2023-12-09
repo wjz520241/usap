@@ -12,8 +12,17 @@ public class ComparisonExp extends AbstractBinaryExp {
 
     public enum Op implements BinaryExp.Op {
 
+        /**
+         * 该指令用于比较两个整数的大小，并将结果保存在操作数栈中。具体而言，它会从操作数栈中弹出两个整数值，然后将比较结果（等于、大于或小于）放入操作数栈中。
+         */
         CMP("cmp"),
+        /**
+         * 该指令用于比较两个浮点数的大小，并将结果保存在操作数栈中。类似于CMP指令，它从操作数栈中弹出两个浮点数值，并将比较结果放入操作数栈中。
+         */
         CMPL("cmpl"),
+        /**
+         * 与CMPL指令类似，CMPG也用于比较两个浮点数的大小，并将结果保存在操作数栈中。不同之处在于，CMPG指令对于NaN（Not-a-Number）值的处理略有不同。
+         */
         CMPG("cmpg"),
         ;
 

@@ -7,7 +7,7 @@ import keeno.usap.ir.proginfo.MethodRef;
 import java.util.List;
 
 /**
- * Representation of invokestatic expression, e.g., T.m(...).
+ * 参阅doc目录中的《方法调用图》, T.m(...).
  */
 public class InvokeStatic extends InvokeExp {
 

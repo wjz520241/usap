@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.type.PrimitiveType;
 
 /**
- * Representation of long literals.
+ * 注释同{@link IntLiteral}
  */
 public class LongLiteral implements IntegerLiteral {
 
@@ -67,6 +67,9 @@ public class LongLiteral implements IntegerLiteral {
         return false;
     }
 
+    /**
+     * @see DoubleLiteral#hashCode()
+     */
     @Override
     public int hashCode() {
         return (int) (value ^ (value >>> 32));

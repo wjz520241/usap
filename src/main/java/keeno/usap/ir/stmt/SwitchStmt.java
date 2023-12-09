@@ -16,21 +16,23 @@ import java.util.Set;
  * case 2: ...
  * default: ...
  * }
+ *
+ * 该类之所以有两个实现类是因为在JVM中switch编译优化所致，可参考该链接：https://blog.csdn.net/ycb1914845451/article/details/113200991
  */
 public abstract class SwitchStmt extends JumpStmt {
 
     /**
-     * The variable holding the condition value of the switch-statement.
+     * 保存switch语句的条件值的变量。
      */
     protected final Var var;
 
     /**
-     * List of jump targets of the switch-statement, one target for each case.
+     * switch语句的跳转目标列表，每个case一个目标。
      */
     protected List<Stmt> targets;
 
     /**
-     * The jump target for default case.
+     * 默认情况下的跳转目标。
      */
     protected Stmt defaultTarget;
 
@@ -38,9 +40,6 @@ public abstract class SwitchStmt extends JumpStmt {
         this.var = var;
     }
 
-    /**
-     * @return the variable holding the condition value of the switch-statement.
-     */
     public Var getVar() {
         return var;
     }

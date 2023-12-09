@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Representation of instance invocation (virtual, interface,
- * and special) expression.
+ * （虚拟、接口和特殊）表达式的表示
  */
 public abstract class InvokeInstanceExp extends InvokeExp {
 
@@ -33,6 +32,9 @@ public abstract class InvokeInstanceExp extends InvokeExp {
         return uses;
     }
 
+    /**
+     * @return 这个格式可以看出InvokeInstanceExp的整体的层次结构和设计思路
+     */
     @Override
     public String toString() {
         return String.format("%s %s.%s%s", getInvokeString(),

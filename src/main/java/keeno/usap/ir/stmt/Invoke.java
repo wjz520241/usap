@@ -29,8 +29,7 @@ public class Invoke extends DefinitionStmt<Var, InvokeExp>
         implements Comparable<Invoke> {
 
     /**
-     * The variable receiving the result of the invocation. This field
-     * is null if no variable receives the invocation result, e.g., o.m(...).
+     * 接收调用结果的变量。此字段如果没有变量接收到调用结果，则为null，例如o.m（…）。
      */
     @Nullable
     private final Var result;
@@ -41,7 +40,7 @@ public class Invoke extends DefinitionStmt<Var, InvokeExp>
     private final InvokeExp invokeExp;
 
     /**
-     * The method containing this statement.
+     * 包含此语句的方法。
      */
     private final JMethod container;
 

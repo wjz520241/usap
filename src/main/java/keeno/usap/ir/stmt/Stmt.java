@@ -11,12 +11,13 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Representation of statements in Tai-e IR.
+ * IR中的statement.
+ * 参考doc目录下的《中间表示》文档
  */
 public interface Stmt extends Indexable, Serializable {
 
     /**
-     * @return the index of this Stmt in the container IR.
+     * @return 该Stmt在容器IR中的索引。
      */
     @Override
     int getIndex();
@@ -24,27 +25,25 @@ public interface Stmt extends Indexable, Serializable {
     void setIndex(int index);
 
     /**
-     * @return the line number of this Stmt in the original source file.
-     * If the line number is unavailable, return -1.
+     * @return 该statement在原始文件中的行号，如果不可用则为-1
      */
     int getLineNumber();
 
     void setLineNumber(int lineNumber);
 
     /**
-     * @return the (optional) left-value expression defined in this Stmt.
-     * In Tai-e IR, each Stmt can define at most one expression.
+     * @return 在此statement中定义的左值，最多只能定义一个
      */
     Optional<LValue> getDef();
 
     /**
-     * @return a list of right-value expressions used in this Stmt.
+     * @return 此statement使用的右值表达式列表
      */
     Set<RValue> getUses();
 
     /**
-     * @return true if execution after this statement could continue at
-     * the following statement, otherwise false.
+     * 这是用来切割基本块的标志，看重写该方法的类名就明白了
+     * @return 如果在执行此语句后可以继续执行下一条语句，则为true；否则为false。
      */
     boolean canFallThrough();
 

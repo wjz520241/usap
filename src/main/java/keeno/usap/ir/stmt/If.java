@@ -20,7 +20,7 @@ public class If extends JumpStmt {
     private final ConditionExp condition;
 
     /**
-     * Jump target when the condition expression is evaluated to true.
+     * 条件表达式求值为true时跳转目标。
      */
     private Stmt target;
 

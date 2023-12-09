@@ -15,6 +15,8 @@ import java.lang.invoke.MethodHandleInfo;
 import static keeno.usap.language.classes.ClassNames.METHOD_HANDLE;
 
 /**
+ * 反射分析使用
+ *
  * Representation of java.lang.invoke.MethodHandle instances.
  * A method handle is a typed, directly executable reference to an underlying
  * method, constructor, field or similar low-level operation.

@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.type.PrimitiveType;
 
 /**
- * Representation of bitwise expression, e.g., a | b.
+ * 位操作表达式  a | b
  */
 public class BitwiseExp extends AbstractBinaryExp {
 

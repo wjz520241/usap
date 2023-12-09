@@ -7,12 +7,12 @@ import java.util.List;
 public abstract class JumpStmt extends AbstractStmt {
 
     /**
-     * @return possible jump targets of this statement.
+     * @return 此语句的可能跳转目标。
      */
     public abstract List<Stmt> getTargets();
 
     /**
-     * Convert a target statement to its String representation.
+     * 将目标语句转换为其字符串表示形式。
      */
     public String toString(Stmt target) {
         return target == null ?

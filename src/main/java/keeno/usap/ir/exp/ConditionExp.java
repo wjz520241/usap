@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.type.PrimitiveType;
 
 /**
- * Representation of condition expression, e.g., a == b.
+ * 条件表达式  a==b
  */
 public class ConditionExp extends AbstractBinaryExp {
 

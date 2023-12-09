@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.type.PrimitiveType;
 
 /**
- * Representation of shift expression, e.g., a >> b.
+ * 位移表达式  a>>b
  */
 public class ShiftExp extends AbstractBinaryExp {
 

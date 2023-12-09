@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 public abstract class InvokeExp implements RValue {
 
     /**
-     * The method reference at the invocation.
+     * 调用时的方法引用。
      */
     protected final MethodRef methodRef;
 
     /**
-     * The arguments of the invocation.
+     * 调用的参数。
      */
     protected final List<Var> args;
 
@@ -50,7 +50,7 @@ public abstract class InvokeExp implements RValue {
     }
 
     /**
-     * @return the i-th argument of the invocation.
+     * @return 获取第i个参数，注意索引范围.
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   (index &lt; 0 || index &ge; getArgCount())
      */

@@ -10,7 +10,7 @@ import keeno.usap.language.type.PrimitiveType;
 public class IntLiteral implements IntegerLiteral {
 
     /**
-     * Cache frequently used literals for saving space.
+     * 缓存常用的字面量，缓存-128~127的数字
      */
     private static final IntLiteral[] cache = new IntLiteral[-(-128) + 127 + 1];
 
@@ -31,7 +31,8 @@ public class IntLiteral implements IntegerLiteral {
 
     public static IntLiteral get(int value) {
         final int offset = 128;
-        if (value >= -128 && value <= 127) { // will cache
+        if (value >= -128 && value <= 127) {
+            //因为第一个元素是从-128开始的，所以取下标需要加上128
             return cache[value + offset];
         }
         return new IntLiteral(value);

@@ -7,7 +7,7 @@ import keeno.usap.ir.proginfo.MethodRef;
 import java.util.List;
 
 /**
- * Representation of invokeinterface expression, e.g., o.m(...).
+ * 参阅doc目录中的《方法调用图》。 o.m(...).
  */
 public class InvokeInterface extends InvokeInstanceExp {
 

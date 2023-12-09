@@ -37,10 +37,8 @@ abstract class AbstractStmt implements Stmt {
         this.lineNumber = lineNumber;
     }
 
-    // Following three methods provide default behaviors for the three
-    // implemented APIs (declared in Stmt). The subclasses of this class
-    // should override these APIs iff their behaviors are different from
-    // the default ones.
+    // 以下三种方法为三个实现的API（在Stmt中声明）提供默认行为。
+    // 如果这些API的行为与默认行为不同，则此类的子类应覆盖这些API
 
     @Override
     public Optional<LValue> getDef() {

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class Catch extends AbstractStmt {
 
     /**
-     * Reference of the exception object to be caught.
+     * 要捕获的异常对象的引用。
      */
     private final Var exceptionRef;
 

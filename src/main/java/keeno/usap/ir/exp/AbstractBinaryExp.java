@@ -23,7 +23,7 @@ abstract class AbstractBinaryExp implements BinaryExp {
     }
 
     /**
-     * Validates type correctness of the two values of this expression.
+     *验证此表达式的两个值的类型正确性。
      */
     protected void validate() {
     }

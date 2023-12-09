@@ -5,7 +5,7 @@ package keeno.usap.ir.exp;
 import keeno.usap.language.type.PrimitiveType;
 
 /**
- * Representation of arithmetic expression, e.g., a + b.
+ * 算数表达式 a + b
  */
 public class ArithmeticExp extends AbstractBinaryExp {
 
@@ -49,6 +49,9 @@ public class ArithmeticExp extends AbstractBinaryExp {
         return op;
     }
 
+    /**
+     * @return 计算机中同类型的才能相加，不是同类型也会转换成同类型再相加
+     */
     @Override
     public PrimitiveType getType() {
         return (PrimitiveType) operand1.getType();

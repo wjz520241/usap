@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Representation of invokedynamic instructions.
- * For more details about invokedynamic instructions, please refer to
- * https://docs.oracle.com/javase/7/docs/api/java/lang/invoke/package-summary.html
+ * 参阅doc目录中的《方法调用图》。
+ * 调用动态指令的表示。
+ * 有关invokedynamic指令的更多详细信息，请参阅：https://docs.oracle.com/javase/7/docs/api/java/lang/invoke/package-summary.html
+ * 或是阅读《深入理解java虚拟机》第八章 虚拟机字节码执行引擎 8.4.4 invokedynamic指令
  */
 public class InvokeDynamic extends InvokeExp {
 
@@ -22,9 +23,7 @@ public class InvokeDynamic extends InvokeExp {
     private final MethodType methodType;
 
     /**
-     * Additional static arguments for bootstrap method.
-     * As all these arguments are taken from the constant pool,
-     * we store them as a list of Literals.
+     * 引导程序方法的其他静态参数。由于所有这些参数都取自常量池，因此我们将它们存储为Literals列表。
      */
     private final List<Literal> bootstrapArgs;
 

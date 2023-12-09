@@ -6,7 +6,7 @@ import keeno.usap.language.type.PrimitiveType;
 import keeno.usap.language.type.ReferenceType;
 
 /**
- * Provides static utility methods for {@link Exp}.
+ * 为{@link Exp}类提供静态工具方法
  */
 public final class Exps {
 

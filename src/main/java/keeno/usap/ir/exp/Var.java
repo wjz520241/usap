@@ -23,8 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Representation of method/constructor parameters, lambda parameters,
- * exception parameters, and local variables.
+ * 方法构造函数参数、lambda参数、异常参数和局部变量的表示
  */
 public class Var implements LValue, RValue, Indexable {
 
