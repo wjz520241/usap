@@ -47,8 +47,7 @@ public interface JClassBuilder {
     boolean isPhantom();
 
     /**
-     * @return the signature attribute for dealing with generics
-     * starting from Java 1.5.
+     * @return 用于处理从Java 1.5开始的泛型的签名属性。
      * @see ClassGSignature
      */
     @Nullable

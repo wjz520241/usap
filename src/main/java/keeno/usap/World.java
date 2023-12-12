@@ -21,9 +21,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Manages the whole-program information of the program being analyzed.
- * Note that the setters of this class are protected: they are supposed
- * to be called (once) by the world builder, not analysis classes.
+ * 管理正在分析的程序的整个程序信息。请注意，这个类的setter是受保护的：它们应该由WorldBuilder调用（一次），而不是分析类。
  */
 public final class World extends AbstractResultHolder
         implements Serializable {

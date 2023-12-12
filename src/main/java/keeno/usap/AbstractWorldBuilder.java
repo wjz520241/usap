@@ -31,6 +31,11 @@ public abstract class AbstractWorldBuilder implements WorldBuilder {
 
     protected static final String JREs = "java-benchmarks/JREs";
 
+    /**
+     * 看着像JVM在编译时产生的方法，猜测是一些Java核心类的方法，
+     * 这些方法在程序执行过程中会被隐式地调用或参与到一些系统功能中。
+     * 当构建一个模拟的Java世界（World）时，这些隐式方法入口可以用来模拟系统行为和支持其他功能。
+     */
     protected static final List<String> implicitEntries = List.of(
             "<java.lang.System: void initializeSystemClass()>",
             "<java.lang.Thread: void <init>(java.lang.ThreadGroup,java.lang.Runnable)>",
@@ -47,6 +52,9 @@ public abstract class AbstractWorldBuilder implements WorldBuilder {
             "<java.security.PrivilegedActionException: void <init>(java.lang.Exception)>"
     );
 
+    /**
+     *该方法根据配置的java版本号去JREs目录下读取对应的jre
+     */
     protected static String getClassPath(Options options) {
         if (options.isPrependJVM()) {
             return String.join(File.pathSeparator, options.getClassPath());
@@ -105,6 +113,7 @@ public abstract class AbstractWorldBuilder implements WorldBuilder {
         });
         // process --app-class-path
         for (String path : options.getAppClassPath()) {
+            //提取目录下和jar包中的class、java路径文件名（包名和文件路径有对应关系）
             classes.addAll(ClassNameExtractor.extract(path));
         }
         return classes;

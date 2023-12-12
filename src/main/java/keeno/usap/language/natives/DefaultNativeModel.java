@@ -46,6 +46,9 @@ import static keeno.usap.language.classes.ClassNames.OBJECT;
 import static keeno.usap.language.classes.ClassNames.STRING;
 import static keeno.usap.util.collection.Maps.newMap;
 
+/**
+ * 对jdk中native关键字所标注的方法进行建模
+ */
 public class DefaultNativeModel implements NativeModel {
 
     private static final Logger logger = LogManager.getLogger(DefaultNativeModel.class);
@@ -99,6 +102,8 @@ public class DefaultNativeModel implements NativeModel {
         register("<java.lang.Class: java.lang.reflect.Constructor[] getDeclaredMethods0(boolean)>", m ->
                 allocateArray(m, typeSystem.getClassType(ClassNames.METHOD))
         );
+
+        //上述两个方法在jdk中找不到，实际上所有的注册方法中有4个找不到，猜测可能是不同JDK的实现不同
 
         // <java.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors0(boolean)>
         register("<java.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors0(boolean)>", m ->

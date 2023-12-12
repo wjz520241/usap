@@ -78,7 +78,7 @@ import static keeno.usap.language.type.VoidType.VOID;
 import static keeno.usap.util.collection.Maps.newConcurrentMap;
 
 /**
- * Converts Soot classes to Tai-e's representation.
+ * 将Soot类转换为Tai-e的表示。
  */
 class Converter {
 
@@ -86,8 +86,7 @@ class Converter {
 
     private final TypeSystem typeSystem;
 
-    // Following four maps may be concurrently written during IR construction,
-    // thus we use concurrent map to ensure their thread-safety.
+    // 以下四个映射可能在IR构建过程中同时使用，因此我们使用并发映射来确保它们的线程安全。
     private final ConcurrentMap<SootField, JField> fieldMap
             = newConcurrentMap(4096);
 
@@ -193,8 +192,7 @@ class Converter {
     }
 
     /**
-     * @return the signature attribute for dealing with generics
-     *         starting from Java 1.5.
+     * @return 用于处理从Java 1.5开始的泛型的签名属性。
      * @see ReferenceTypeGSignature
      */
     @Nullable

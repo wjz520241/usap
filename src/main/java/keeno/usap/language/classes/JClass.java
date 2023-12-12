@@ -84,7 +84,7 @@ public class JClass extends AbstractResultHolder
     }
 
     /**
-     * This method should be called after creating this instance.
+     * 应在创建此实例后调用此方法。
      */
     public void build(JClassBuilder builder) {
         simpleName = builder.getSimpleName();

@@ -39,10 +39,7 @@ class SootClassLoader implements JClassLoader {
                 // TODO: handle phantom class more comprehensively
                 jclass = new JClass(this, sootClass.getName(),
                         sootClass.moduleName);
-                // New class must be put into classes map at first,
-                // at build(jclass) may also trigger the loading of
-                // the new created class. Not putting the class into classes
-                // may cause infinite recursion.
+                // 新类必须首先放入类映射中，在构建时（jclass）也可能触发加载新创建的类(如加载父类时)。不将类放入类中可能会导致无限递归。
                 classes.put(name, jclass);
                 new SootClassBuilder(converter, sootClass).build(jclass);
                 hierarchy.addClass(jclass);

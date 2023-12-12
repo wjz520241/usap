@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.stream.Stream;
 
 /**
- * Manages the classes and class-related resolution of the program being analyzed.
+ * 管理正在分析的程序的类和类相关的解析。
  */
 public interface ClassHierarchy extends Indexer<JClass> {
 
@@ -76,7 +76,7 @@ public interface ClassHierarchy extends Indexer<JClass> {
     JClass getJREClass(String name);
 
     /**
-     * Obtains a method declared in a JRE class by its signature.
+     * 通过声明的签名方法获取JRE中的类
      *
      * @param methodSig of the method
      * @return the {@link JMethod} for signature if found;

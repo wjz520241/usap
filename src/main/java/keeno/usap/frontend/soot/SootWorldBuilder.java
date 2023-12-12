@@ -75,26 +75,37 @@ public class SootWorldBuilder extends AbstractWorldBuilder {
         soot.options.Options.v().set_output_format(
                 soot.options.Options.output_format_jimple);
         soot.options.Options.v().set_keep_line_number(true);
+        //将分析的目标指定为应用程序。默认情况下，Soot会将分析的目标视为库或框架，通过设置为true，将目标指定为应用程序。
         soot.options.Options.v().set_app(true);
         // exclude jdk classes from application classes
         soot.options.Options.v().set_exclude(List.of("jdk.*", "apple.laf.*"));
+        //将分析范围扩展到整个程序。默认情况下，Soot只分析指定的入口类及其直接依赖的类。通过设置为true，可以将分析范围扩展到整个程序，包括间接依赖的类。
         soot.options.Options.v().set_whole_program(true);
+        //在分析过程中不释放方法体。默认情况下，Soot会在分析完成后释放方法体，以减少内存占用。通过设置为true，可以保留方法体的内容
         soot.options.Options.v().set_no_writeout_body_releasing(true);
+        //"jb"的阶段的选项，即保留源代码中的注解。默认情况下，Soot会在分析过程中移除源代码中的注解。通过设置为"true"，可以保留源代码中的注解。
         soot.options.Options.v().setPhaseOption("jb", "preserve-source-annotations:true");
+        //"jb"的阶段的选项，即禁用LambdaMetafactory模型。LambdaMetafactory是Java中用于实现Lambda表达式的工具。通过设置为"false"，可以禁用使用LambdaMetafactory模型。
         soot.options.Options.v().setPhaseOption("jb", "model-lambdametafactory:false");
+        //禁用Call Graph构建
         soot.options.Options.v().setPhaseOption("cg", "enabled:false");
         if (options.isPrependJVM()) {
             // TODO: figure out why -prepend-classpath makes Soot faster
+            //默认情况下，Soot会将当前类路径添加到已有的类路径之后。通过设置为true，可以将当前类路径添加到已有的类路径之前。
             soot.options.Options.v().set_prepend_classpath(true);
         }
         if (options.isAllowPhantom()) {
+            //允许使用虚假引用（Phantom References）。虚假引用是Java中一种特殊类型的引用，
+            // 用于实现对对象回收的处理。通过设置为true，可以允许Soot在分析过程中使用虚假引用。
+            //参阅《深入理解java虚拟机》第三章 垃圾收集器与内存分配策略 3.2.3 再谈引用
             soot.options.Options.v().set_allow_phantom_refs(true);
         }
         if (options.isPreBuildIR()) {
-            // we need to set this option to false when pre-building IRs,
-            // otherwise Soot throws RuntimeException saying
+            // 在预构建IR时，我们需要将此选项设置为false,
+            // 否则Soot抛出RuntimeException
             // "No method source set for method ...".
             // TODO: figure out the reason of "No method source"
+            //在加载方法体后是否删除方法体。默认情况下，Soot在加载方法体后会删除方法体，以节省内存。通过设置为false，可以保留方法体
             soot.options.Options.v().set_drop_bodies_after_load(false);
         }
 
@@ -116,8 +127,7 @@ public class SootWorldBuilder extends AbstractWorldBuilder {
     }
 
     /**
-     * Reads basic classes specified by file {@link #BASIC_CLASSES} and
-     * adds them to {@code scene}.
+     * 读取文件{@link #BASIC_CLASSES}指定的基类，并将它们添加到{@code scene}中
      */
     private static void addBasicClasses(Scene scene) {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
@@ -135,10 +145,8 @@ public class SootWorldBuilder extends AbstractWorldBuilder {
     }
 
     /**
-     * Add classes in reflection log to the scene.
-     * Tai-e's ClassHierarchy depends on Soot's Scene, which does not change
-     * after hierarchy's construction, thus we need to add the classes
-     * in the reflection log before starting Soot.
+     * 将反射日志中的类添加到场景中。Tai-e的ClassHierarchy依赖于Soot的Scene，
+     * 在构建层次结构后不会发生变化，因此我们需要在启动Soot之前将类添加到反射日志中。
      * <p>
      * TODO: this is a tentative solution. We should remove it and use other
      *  way to load basic classes in the reflection log, so that world builder
