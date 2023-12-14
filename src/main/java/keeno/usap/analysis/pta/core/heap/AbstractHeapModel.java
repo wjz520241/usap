@@ -64,7 +64,7 @@ public abstract class AbstractHeapModel implements HeapModel {
             = Maps.newTwoKeyMap();
 
     /**
-     * The merged object representing string constants.
+     * 表示字符串常量的合并对象。
      */
     private final MergedObj mergedSC;
 
@@ -79,6 +79,9 @@ public abstract class AbstractHeapModel implements HeapModel {
 
     private final List<Obj> objs = new ArrayList<>(1024);
 
+    /**
+     * SC表示的是string-constants的意思
+     */
     protected AbstractHeapModel(AnalysisOptions options) {
         isDistinguishedSC = getSCPredicate(
                 options.getString("distinguish-string-constants"));

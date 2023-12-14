@@ -10,41 +10,44 @@ import keeno.usap.analysis.pta.core.heap.Obj;
 import keeno.usap.language.classes.JMethod;
 
 /**
- * Represents context sensitivity variants.
+ * 上下文敏感模型选择器。 参考《软件分析》第十一、十二节
  */
 public interface ContextSelector {
 
     /**
-     * @return the empty context that does not contain any context elements.
+     * @return 不包含任何上下文元素的空上下文。
      */
     Context getEmptyContext();
 
     /**
-     * Selects contexts for static methods.
+     * 为静态方法选择上下文。
      *
-     * @param callSite the (context-sensitive) call site.
-     * @param callee   the callee.
-     * @return the context for the callee.
+     * @param callSite （上下文敏感）调用点.
+     * @param callee   被调用者.
+     * @return 被调用者的上下文
      */
     Context selectContext(CSCallSite callSite, JMethod callee);
 
     /**
-     * Selects contexts for instance methods.
+     * 为实例方法选择上下文。
      *
-     * @param callSite the (context-sensitive) call site.
-     * @param recv     the (context-sensitive) receiver object for the callee.
-     * @param callee   the callee.
-     * @return the context for the callee.
+     * @param callSite （上下文敏感）调用点.
+     * @param recv     被调用者的（上下文相关的）接收器对象。例如：
+     *                 new a...
+     *                 new c...
+     *                 a.b(c);
+     *                 其中被调用者b的接收对象是a
+     * @param callee   被调用者.
+     * @return 被调用者的上下文。
      */
     Context selectContext(CSCallSite callSite, CSObj recv, JMethod callee);
 
     /**
-     * Selects heap contexts for new-created abstract objects.
+     * 为新创建的抽象对象选择堆上下文。
      *
-     * @param method the (context-sensitive) method that contains the
-     *               allocation site of the new-created object.
-     * @param obj    the new-created object.
-     * @return the heap context for the object.
+     * @param method 包含新建对象的调用点的（上下文相关）方法。
+     * @param obj    新创建的对象。
+     * @return 对象的堆上下文。
      */
     Context selectHeapContext(CSMethod method, Obj obj);
 }

@@ -144,7 +144,7 @@ public class MapBasedCSManager implements CSManager {
         private final Map<CSObj, ArrayIndex> arrayIndexes = Maps.newMap();
 
         /**
-         * Counter for assigning unique indexes to Pointers.
+         * 用于为指针分配唯一索引的计数器。
          */
         private int counter = 0;
 

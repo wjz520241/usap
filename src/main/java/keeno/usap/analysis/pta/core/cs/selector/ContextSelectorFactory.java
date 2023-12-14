@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
- * Provides static factory methods for various context selectors.
+ * 为各种上下文选择器提供静态工厂方法。
  */
 public class ContextSelectorFactory {
 
@@ -26,8 +26,7 @@ public class ContextSelectorFactory {
     }
 
     /**
-     * @return a context selector for given context sensitivity variant.
-     * The returned selector applies the same variant for all methods.
+     * @return 针对给定的上下文敏感模型，提供一个上下文选择器。该选择器会在所有方法中应用相同的模型。
      */
     public static ContextSelector makePlainSelector(String cs) {
         if (cs.equals("ci")) {

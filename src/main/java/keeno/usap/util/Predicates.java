@@ -35,7 +35,9 @@ public final class Predicates {
             }
         };
 
-        @SuppressWarnings("unchecked") // safe contravariant cast
+        //withNarrowedType方法的作用是返回一个经过类型缩小的Predicate实例，以便在需要特定类型的Predicate时使用
+        // safe contravariant cast
+        @SuppressWarnings("unchecked")
         private <T> Predicate<T> withNarrowedType() {
             return (Predicate<T>) this;
         }
@@ -49,7 +51,7 @@ public final class Predicates {
     }
 
     /**
-     * @return a predicate that always evaluates to {@code false}.
+     * @return 一个总是计算为false的谓词
      */
     public static <T> Predicate<T> alwaysFalse() {
         return PresetPredicates.ALWAYS_FALSE.withNarrowedType();

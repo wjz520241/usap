@@ -14,27 +14,27 @@ import java.util.Collection;
 import java.util.stream.Stream;
 
 /**
- * Manages context-sensitive elements and pointers in pointer analysis.
+ * 管理指针分析中上下文相关的元素和指针。
  */
 public interface CSManager {
 
     /**
-     * @return a context-sensitive variable for given context and variable.
+     * @return 给定上下文和变量，提供一个上下文敏感变量。
      */
     CSVar getCSVar(Context context, Var var);
 
     /**
-     * @return a context-sensitive object for given context and object.
+     * @return 给定上下文和对象，提供一个上下文敏感对象。
      */
     CSObj getCSObj(Context heapContext, Obj obj);
 
     /**
-     * @return a context-sensitive call site for given context and call site.
+     * @return 给定上下文和调用点，提供一个上下文敏感调用点。
      */
     CSCallSite getCSCallSite(Context context, Invoke callSite);
 
     /**
-     * @return a context-sensitive method for given context and method.
+     * @return 给定上下文和方法，提供一个上下文敏感方法。
      */
     CSMethod getCSMethod(Context context, JMethod method);
 

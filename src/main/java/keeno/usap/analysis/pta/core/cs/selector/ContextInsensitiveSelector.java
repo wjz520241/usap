@@ -10,9 +10,7 @@ import keeno.usap.analysis.pta.core.heap.NewObj;
 import keeno.usap.language.classes.JMethod;
 
 /**
- * Selector for context-insensitive analysis.
- * Context insensitivity does not use any context elements,
- * thus the type of context elements is irrelevant.
+ * 用于上下文不敏感分析的选择器。上下文不敏感不使用任何上下文元素，因此上下文元素的类型无关紧要
  */
 class ContextInsensitiveSelector extends AbstractContextSelector<Void> {
 

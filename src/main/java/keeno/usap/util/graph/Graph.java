@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Representation of a directed graph.
+ * 有向图
  *
  * @param <N> type of nodes
  */
@@ -38,17 +38,17 @@ public interface Graph<N> extends Iterable<N>, Serializable {
     }
 
     /**
-     * @return the predecessors of given node in this graph.
+     * @return 前驱结点
      */
     Set<N> getPredsOf(N node);
 
     /**
-     * @return the successors of given node in this graph.
+     * @return 后继结点
      */
     Set<N> getSuccsOf(N node);
 
     /**
-     * @return incoming edges of the given node.
+     * @return 入度
      */
     default Set<? extends Edge<N>> getInEdgesOf(N node) {
         return Views.toMappedSet(getPredsOf(node),
@@ -56,14 +56,14 @@ public interface Graph<N> extends Iterable<N>, Serializable {
     }
 
     /**
-     * @return the number of in edges of the given node.
+     * @return 入度的边数
      */
     default int getInDegreeOf(N node) {
         return getInEdgesOf(node).size();
     }
 
     /**
-     * @return outgoing edges of the given node.
+     * @return 出度
      */
     default Set<? extends Edge<N>> getOutEdgesOf(N node) {
         return Views.toMappedSet(getSuccsOf(node),
@@ -71,19 +71,19 @@ public interface Graph<N> extends Iterable<N>, Serializable {
     }
 
     /**
-     * @return the number of out edges of the given node.
+     * @return 出度的边数
      */
     default int getOutDegreeOf(N node) {
         return getOutEdgesOf(node).size();
     }
 
     /**
-     * @return all nodes of this graph.
+     * @return 该图的所有节点。
      */
     Set<N> getNodes();
 
     /**
-     * @return the number of the nodes in this graph.
+     * @return 此图中的节点数。
      */
     default int getNumberOfNodes() {
         return getNodes().size();

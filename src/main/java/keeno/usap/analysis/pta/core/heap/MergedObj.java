@@ -11,7 +11,7 @@ import java.util.Set;
 import static keeno.usap.util.collection.Sets.newSet;
 
 /**
- * Represents a set of merged objects.
+ * 表示一组合并的对象。
  */
 public class MergedObj extends Obj {
 
@@ -20,13 +20,12 @@ public class MergedObj extends Obj {
     private final Type type;
 
     /**
-     * Set of objects represented by this merged object.
+     * 该合并对象表示的对象集。
      */
     private final Set<Obj> representedObjs = newSet();
 
     /**
-     * The representative object of this merged object. It is the first
-     * object added.
+     * 此合并对象的代表对象。它是添加的第一个对象。
      */
     private Obj representative;
 

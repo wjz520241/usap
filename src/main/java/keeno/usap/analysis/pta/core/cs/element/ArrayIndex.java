@@ -6,7 +6,8 @@ import keeno.usap.language.type.ArrayType;
 import keeno.usap.language.type.Type;
 
 /**
- * Represents array index pointers.
+ * 表示数组索引指针.
+ * 由于模拟数组的索引模型是一件十分复杂且收益很低的事情，所以无论我们往数组的那个索引下赋值，都认为该数组已经被污染
  */
 public class ArrayIndex extends AbstractPointer {
 

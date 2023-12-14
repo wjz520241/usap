@@ -11,6 +11,13 @@ public interface Descriptor {
 
     /**
      * Descriptor for entry objects.
+     * 该实例等价于下列形式
+     * Descriptor ENTRY_DESC = new Descriptor() {
+     *     @Override
+     *     public String string() {
+     *         return "EntryPointObj";
+     *     }
+     * };
      */
     Descriptor ENTRY_DESC = () -> "EntryPointObj";
 

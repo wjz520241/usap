@@ -3,18 +3,17 @@
 package keeno.usap.analysis.pta.core.cs.context;
 
 /**
- * Representation of contexts in context-sensitive pointer analysis.
- * Each context can be seen as a list of zero or more context elements.
+ * 上下文相关指针分析中上下文的表示。每个上下文都可以看作是零个或多个上下文元素的列表。
  */
 public interface Context {
 
     /**
-     * @return the length (i.e., the number of elements) of this context.
+     * @return 该上下文的长度（即元素的数量）。
      */
     int getLength();
 
     /**
-     * @return the i-th element of this context. Starts from 0.
+     * @return 该上下文的第i个元素。从0开始。
      */
     Object getElementAt(int i);
 }

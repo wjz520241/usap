@@ -55,6 +55,7 @@ public class PointerAnalysis extends ProgramAnalysis<PointerAnalysisResult> {
         HeapModel heapModel = new AllocationSiteBasedModel(options);
         ContextSelector selector = null;
         String advanced = options.getString("advanced");
+        // ci（context-insensitive）是上下不敏感的意思
         String cs = options.getString("cs");
         if (advanced != null) {
             if (advanced.equals("collection")) {

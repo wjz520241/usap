@@ -35,8 +35,7 @@ public abstract class Analysis {
     }
 
     /**
-     * Checks if this analysis class declares a public static field "ID"
-     * and its value is identical to the analysis id in the configuration.
+     * 检查此分析类是否声明了公共静态字段“ID”，并且其值是否与配置中的分析ID相同。
      */
     private void validateId() {
         Class<?> analysisClass = getClass();

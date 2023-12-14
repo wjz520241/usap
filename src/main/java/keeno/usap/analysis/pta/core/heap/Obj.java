@@ -9,7 +9,7 @@ import keeno.usap.util.Indexable;
 import java.util.Optional;
 
 /**
- * Represents of abstract objects in pointer analysis.
+ * 指针分析中抽象对象的表示。
  *
  * @see HeapModel
  */
@@ -34,7 +34,7 @@ public abstract class Obj implements Indexable {
     }
 
     /**
-     * An object is functional means that it can hold fields (or array indexes).
+     * 对象是函数性的，这意味着它可以保存字段（或数组索引）。
      *
      * @return {@code true} if this is a function {@link Obj}.
      */

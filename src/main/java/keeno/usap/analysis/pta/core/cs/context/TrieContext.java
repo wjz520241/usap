@@ -37,6 +37,9 @@ public class TrieContext implements Context {
         return length;
     }
 
+    /**
+     *一个巧妙的递归设计，不会访问最初的默认上下文
+     */
     @Override
     public Object getElementAt(int i) {
         assert 0 <= i && i < length;
@@ -77,8 +80,7 @@ public class TrieContext implements Context {
     public static class Factory<T> implements ContextFactory<T> {
 
         /**
-         * Root context of all tree contexts produced by this factory.
-         * It also acts as the default context.
+         * 此工厂生成的所有树上下文的根上下文。它还充当默认上下文。
          */
         private final TrieContext rootContext = new TrieContext();
 
