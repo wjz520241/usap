@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Composite plugin which allows multiple independent plugins
- * to be used together.
+ * 复合插件，允许多个独立的插件一起使用。
  */
 public class CompositePlugin implements Plugin {
 

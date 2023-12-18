@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Represents pointer flow graph in context-sensitive pointer analysis.
+ * 表示上下文敏感指针分析中的指针流图。
  */
 public class PointerFlowGraph implements Graph<Pointer> {
 
@@ -25,14 +25,16 @@ public class PointerFlowGraph implements Graph<Pointer> {
     }
 
     /**
-     * Adds a pointer flow edge {@code source} -> {@code target}, and
-     * returns the edge. If the edge already exists and {@code kind}
-     * is not {@link FlowKind#OTHER}, {@code null} is returned.
+     * 添加一个指针流图边 {@code source} -> {@code target}, 并返回这个边. 如果这个边已经存在且 {@code kind}
+     * 不是 {@link FlowKind#OTHER}, 则返回 {@code null} .
      */
     public PointerFlowEdge getOrAddEdge(FlowKind kind, Pointer source, Pointer target) {
         return source.getOrAddEdge(kind, source, target);
     }
 
+    /**
+     * 如果你看过《软件分析》，你应该明白指针流图中的对象在算法中实际上是单向流动的
+     */
     @Override
     public Set<? extends Edge<Pointer>> getInEdgesOf(Pointer node) {
         throw new UnsupportedOperationException();

@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * Represents context-sensitive call sites.
+ * 上下文敏感的调用点
  */
 public class CSCallSite extends AbstractCSElement {
 

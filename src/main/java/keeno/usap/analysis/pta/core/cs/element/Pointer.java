@@ -14,18 +14,14 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
- * Represents all pointers (nodes) in context-sensitive
- * pointer analysis (pointer flow graph).
+ * 表示上下文相关指针分析（指针流图）中的所有指针（节点）。
  */
 public interface Pointer extends Indexable {
 
     /**
-     * Retrieves the points-to set associated with this pointer.
-     * <p>
-     * This method may return {@code null}.
-     * We recommend use {@link #getObjects()} and {@link #objects()}
-     * for accessing the objects pointed by this pointer after
-     * the pointer analysis finishes.
+     * 获取与该指针关联的指向集合。
+     * 此方法可能返回 {@code null}.
+     * 我们建议在指针分析完成后使用 {@link #getObjects()} 和 {@link #objects()}来访问此指针所指向的对象。
      *
      * @return the points-to set associated with this pointer.
      */
@@ -33,12 +29,12 @@ public interface Pointer extends Indexable {
     PointsToSet getPointsToSet();
 
     /**
-     * Sets the associated points-to set of this pointer.
+     * 设置该指针的关联指向集合。
      */
     void setPointsToSet(PointsToSet pointsToSet);
 
     /**
-     * Adds filter to filter out objects pointed to by this pointer.
+     * 添加过滤器以过滤出此指针指向的对象。
      */
     void addFilter(Predicate<CSObj> filter);
 
@@ -48,37 +44,29 @@ public interface Pointer extends Indexable {
     Set<Predicate<CSObj>> getFilters();
 
     /**
-     * Safely retrieves context-sensitive objects pointed to by this pointer.
+     * 安全地检索此指针指向的上下文相关对象。
      *
-     * @return an empty set if {@code pointer} has not been associated
-     * a {@code PointsToSet}; otherwise, returns set of objects in the
-     * {@code PointsToSet}.
+     * @return 如果{@code pointer}尚未与{@code PointsToSet}关联，则为空集；否则，返回{@code PointsToSet}中的一组对象。
      */
     Set<CSObj> getObjects();
 
     /**
-     * Safely retrieves context-sensitive objects pointed to by this pointer.
-     *
-     * @return an empty stream if {@code pointer} has not been associated
-     * a {@code PointsToSet}; otherwise, returns stream of objects in the
-     * {@code PointsToSet}.
+     * 同上
      */
     Stream<CSObj> objects();
 
     /**
-     * Adds a pointer flow edge {@code source} -> {@code target}, and
-     * returns the edge. If the edge already exists and {@code kind}
-     * is not {@link FlowKind#OTHER}, {@code null} is returned.
+     * 添加指针流边 {@code source} -> {@code target}, 并返回边。如果边已经存在，并且 {@code kind}不是 {@link FlowKind#OTHER}, 则返回{@code null}.
      */
     PointerFlowEdge getOrAddEdge(FlowKind kind, Pointer source, Pointer target);
 
     /**
-     * @return out edges of this pointer in pointer flow graph.
+     * @return 指针流图中该指针的出度边。
      */
     Set<PointerFlowEdge> getOutEdges();
 
     /**
-     * @return out degree of this pointer in pointer flow graph.
+     * @return 指针流图中该指针的出度。
      */
     int getOutDegree();
 

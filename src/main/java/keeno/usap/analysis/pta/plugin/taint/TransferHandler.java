@@ -152,6 +152,13 @@ class TransferHandler extends OnFlyHandler {
         }
     }
 
+    /**
+     * 污点转移的条件，实际就是load/store
+     * 变量-》数组
+     * 变量-》字段
+     * 数组-》变量
+     * 字段-》变量
+     */
     private void transferTaint(PointsToSet baseObjs, Context ctx, TransferInfo info) {
         CSVar csVar = csManager.getCSVar(ctx, info.var());
         Transfer tf = getTransferFunction(info.transfer().type());

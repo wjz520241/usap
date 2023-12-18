@@ -73,6 +73,9 @@ public class TaintAnalysis implements Plugin {
         onFlyHandler.onNewPointsToSet(csVar, pts);
     }
 
+    /**
+     * 收集制作污点流数据
+     */
     @Override
     public void onFinish() {
         Set<TaintFlow> taintFlows = sinkHandler.collectTaintFlows();

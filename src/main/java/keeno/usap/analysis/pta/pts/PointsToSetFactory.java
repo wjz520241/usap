@@ -14,6 +14,9 @@ public class PointsToSetFactory {
 
     private final Supplier<PointsToSet> factory;
 
+    /**
+     * 一种对象懒加载的方式，在用到的时候才创建对象（调用make时）
+     */
     public PointsToSetFactory(Indexer<CSObj> objIndexer) {
         factory = () -> new HybridBitPointsToSet(objIndexer, true);
     }

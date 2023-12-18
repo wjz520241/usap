@@ -9,8 +9,11 @@ import keeno.usap.util.Hashes;
 import java.util.Optional;
 
 /**
- * Represents the objects whose allocation sites are not explicitly
- * written in the program.
+ * Represents the objects whose allocation sites are not explicitly written in the program.
+ *
+ * 表示分配点未显式写入程序的对象。
+ * "allocation sites" 通常指的是程序中动态内存分配的位置。在程序执行过程中，当动态内存被分配给对象或数据结构时，该内存分配的位置就是一个 "allocation site"。
+ * 例如java中的new表达式
  */
 public class MockObj extends Obj {
 

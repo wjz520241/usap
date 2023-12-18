@@ -21,7 +21,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 /**
- * Represents context-sensitive call graph.
+ * 上下文敏感的调用图
  */
 public class CSCallGraph extends AbstractCallGraph<CSCallSite, CSMethod> {
 
@@ -33,28 +33,27 @@ public class CSCallGraph extends AbstractCallGraph<CSCallSite, CSMethod> {
     }
 
     /**
-     * Adds an entry method to this call graph.
+     * 将入口方法添加至调用图
      */
     public void addEntryMethod(CSMethod entryMethod) {
         entryMethods.add(entryMethod);
     }
 
     /**
-     * Adds a reachable method to this call graph.
-     *
-     * @return true if this call graph changed as a result of the call,
-     * otherwise false.
+     * 将可达方法添加到此调用图中。
+     * @return 如果此调用图因调用而更改，则为true，否则为false。
+     * 为false说明该方法已经被处理过了，一个优化处理
      */
     public boolean addReachableMethod(CSMethod csMethod) {
         return reachableMethods.add(csMethod);
     }
 
     /**
-     * Adds a new call graph edge to this call graph.
+     * 将新的调用边添加到此调用图。
      *
      * @param edge the call edge to be added
-     * @return true if the call graph changed as a result of the call,
-     * otherwise false.
+     * @return 如果调用图因调用而更改，则为true，否则为false。
+     * 为false说明该边已经被处理过了，一个优化处理
      */
     public boolean addEdge(Edge<CSCallSite, CSMethod> edge) {
         if (edge.getCallSite().addEdge(edge)) {

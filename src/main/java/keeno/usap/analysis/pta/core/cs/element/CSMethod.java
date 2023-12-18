@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 /**
- * Represents context-sensitive methods.
+ * 上下文敏感方法
  */
 public class CSMethod extends AbstractCSElement implements Indexable {
 
@@ -46,7 +46,7 @@ public class CSMethod extends AbstractCSElement implements Indexable {
     }
 
     public void addEdge(Edge<CSCallSite, CSMethod> edge) {
-        // The caller has ensured that each edge added to CSMethod is unique
+        // 调用方已确保添加到CSMethod的每条边都是唯一的
         edges.add(edge);
     }
 

@@ -18,27 +18,27 @@ public interface CallGraph<CallSite, Method>
         extends Graph<Method>, StmtResult<Set<Method>> {
 
     /**
-     * @return the call sites that invoke the given method.
+     * @return 调用给定方法的调用点。
      */
     Set<CallSite> getCallersOf(Method callee);
 
     /**
-     * @return the methods that are called by the given call site.
+     * @return 调用点调用的方法
      */
     Set<Method> getCalleesOf(CallSite callSite);
 
     /**
-     * @return the methods that are called by all call sites in the given method.
+     * @return 由给定方法中的所有调用点调用的方法。
      */
     Set<Method> getCalleesOfM(Method caller);
 
     /**
-     * @return the method that contains the given call site.
+     * @return 包含给定调用点的方法。
      */
     Method getContainerOf(CallSite callSite);
 
     /**
-     * @return the call sites within the given method.
+     * @return 给定方法中的调用点。
      */
     Set<CallSite> getCallSitesIn(Method method);
 
@@ -50,12 +50,13 @@ public interface CallGraph<CallSite, Method>
     }
 
     /**
-     * @return the call edges out of the given call site.
+     * @return 给定调用点的出度边
      */
     Stream<Edge<CallSite, Method>> edgesOutOf(CallSite callSite);
 
     /**
-     * @return the call edges targeting to the given method.
+     * @return 给定方法的入度边
+     * edgesOutOf和edgesInTo方法这样设计是因为图中的结构CallSite-》Method-》CallSite-》....
      */
     Stream<Edge<CallSite, Method>> edgesInTo(Method method);
 
@@ -65,27 +66,27 @@ public interface CallGraph<CallSite, Method>
     Stream<Edge<CallSite, Method>> edges();
 
     /**
-     * @return the number of call graph edges in this call graph.
+     * @return 此调用图中的调用图边数。
      */
     int getNumberOfEdges();
 
     /**
-     * @return the entry methods of this call graph.
+     * @return 此调用图的入口方法。
      */
     Stream<Method> entryMethods();
 
     /**
-     * @return all reachable methods in this call graph.
+     * @return 此调用图中所有可到达的方法。
      */
     Stream<Method> reachableMethods();
 
     /**
-     * @return the number of reachable methods in this call graph.
+     * @return 此调用图中可到达方法的数量。
      */
     int getNumberOfMethods();
 
     /**
-     * @return true if this call graph contains the given method, otherwise false.
+     * @return 如果此调用图包含给定的方法，则为true，否则为false。
      */
     boolean contains(Method method);
 }

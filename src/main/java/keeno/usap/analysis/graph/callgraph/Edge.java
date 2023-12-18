@@ -5,7 +5,7 @@ package keeno.usap.analysis.graph.callgraph;
 import keeno.usap.util.Hashes;
 
 /**
- * Represents call edges in the call graph.
+ * 表示调用图中的调用边。
  *
  * @param <CallSite> type of call sites
  * @param <Method>   type of methods

@@ -8,7 +8,7 @@ import keeno.usap.analysis.Analysis;
 import keeno.usap.util.Timer;
 
 /**
- * Records the elapsed time of pointer analysis.
+ * 记录指针分析的运行时间。
  */
 public class AnalysisTimer implements Plugin {
 

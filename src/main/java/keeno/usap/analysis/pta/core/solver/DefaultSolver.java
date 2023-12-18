@@ -281,6 +281,7 @@ public class DefaultSolver implements Solver {
 
     /**
      * Processes work list entries until the work list is empty.
+     * 参考《软件分析》第十一、十二节算法讲解
      */
     private void analyze() {
         while (!workList.isEmpty() && !isTimeout) {
@@ -528,6 +529,15 @@ public class DefaultSolver implements Solver {
 
         private final Map<New, Invoke> registerInvokes = Maps.newMap();
 
+        /**
+         * finalize()方法是一个被垃圾回收器（Garbage Collector）调用的方法。当一个对象不再被引用且即将被垃圾回收器回收时，
+         * 垃圾回收器会在回收对象之前调用finalize()方法。
+         * 这个方法的主要作用是在对象被销毁之前执行一些清理工作或资源释放工作。
+         * 例如，可以在finalize()方法中关闭打开的文件、释放占用的系统资源等。需要注意的是，
+         * finalize()方法的执行时间是不确定的，因此不适合用于实时性操作。
+         * 然而，从Java 9开始，finalize()方法已经被废弃（deprecated），不推荐使用了。原因是该方法的使用存在一些问题，如不可控的执行时间、
+         * 无法保证执行与否等。取而代之的是使用其他方式来进行资源的释放和清理，比如使用try-with-resources语句块来自动关闭资源。
+         */
         private final JMethod finalize = Objects.requireNonNull(
                 hierarchy.getJREMethod(FINALIZE));
 

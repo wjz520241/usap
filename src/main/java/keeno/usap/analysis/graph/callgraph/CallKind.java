@@ -10,8 +10,7 @@ public enum CallKind {
     STATIC,
     DYNAMIC,
     /**
-     * Non-regular calls, such calls are typically handled
-     * by pointer analysis plugins.
+     * 非常规调用，此类调用通常由指针分析插件处理。
      */
     OTHER,
 }

@@ -32,8 +32,7 @@ public abstract class AbstractCallGraph<CallSite, Method>
     protected final Set<Method> entryMethods = Sets.newSet();
 
     /**
-     * Set of reachable methods. This field is not final so that
-     * it allows subclasses choose more efficient data structure.
+     * 一组可到达的方法。该字段不是最终字段，因此它允许子类选择更有效的数据结构。
      */
     protected Set<Method> reachableMethods = Sets.newSet();
 

@@ -93,9 +93,7 @@ public class PointerAnalysis extends ProgramAnalysis<PointerAnalysisResult> {
         AnalysisOptions options = getOptions();
         Solver solver = new DefaultSolver(options,
                 heapModel, selector, new MapBasedCSManager());
-        // The initialization of some Plugins may read the fields in solver,
-        // e.g., contextSelector or csManager, thus we initialize Plugins
-        // after setting all other fields of solver.
+        // 一些插件的初始化可能会读取解算器中的字段，例如contextSelector或csManager，因此我们在设置解算器的所有其他字段后初始化插件。
         setPlugin(solver, options);
         solver.solve();
         return solver.getResult();
